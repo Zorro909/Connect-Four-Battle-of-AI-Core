@@ -41,13 +41,15 @@ https://github.com/Zorro909/Connect-Four-Battle-of-AI-Core/blob/v0.1/4%20Gewinnt
 
 You need to implement the Interface de.Zorro.VierGewinnt.API.AI
 
-Board has the Functions:
-	getCell(x,y): Returns the Value of the Cell (X,O,u)
-	getWidth(): Returns the Width of the Board
-	getHeight(): Returns the Height of the Board
-	copyBoard(): Returns a copied board where you can set your discs yourself
-	setNew(player,x): (Only available for copied Boards) You can set a stone yourself. Player is either 0 or 1. Must be the opposite who just played.
-										Returns e for Error, g for good, X for Player 1 won, O for Player 2 won, l for a Tie (Nobody won and Board is full)
+Board has the Functions:  
+	getCell(x,y): Returns the Value of the Cell (X,O,u)  
+	getWidth(): Returns the Width of the Board  
+	getHeight(): Returns the Height of the Board  
+	copyBoard(): Returns a copied board where you can set your discs yourself  
+	setNew(player,x): (Only available for copied Boards) You can set a stone yourself. Player is either 0 or 1.  
+	                   Must be the opposite who just played.  
+			   Returns e for Error, g for good, X for Player 1 won, O for Player 2 won, l for a Tie  
+			   (Nobody won and Board is full)
 		
 #### Building
 
@@ -69,7 +71,7 @@ The Jar File Name must be schemed after this: MainClass.jar (The Class currently
 
 https://github.com/Zorro909/Connect-Four-Battle-of-AI-Core/blob/v0.1/4%20Gewinnt/ai_templates/JSTemplateAI.js
 
-You're able to use the same Options like Java.
+You're able to use the same Options like Java.  
 Additionally you're able to use Java Classes like java.util.Random
 ```
 var random = Java.type("java.util.Random");
@@ -94,7 +96,7 @@ def turn(board,symbol)
     return x
 ```
 
-The Board variable has the following functions:
-	getCell(x,y): Returns the Value of the Cell (X,O,u)
-	getWidth(): Returns the Width of the Board
-	getHeight(): Returns the Height of the Board
+The Board variable has the following functions:  
+	getCell(x,y): Returns the Value of the Cell (X,O,u)  
+	getWidth(): Returns the Width of the Board  
+	getHeight(): Returns the Height of the Board  
