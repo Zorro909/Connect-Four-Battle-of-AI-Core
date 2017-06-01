@@ -1,7 +1,7 @@
 import random
 
 def turn(board,symbol):
-    x = random.choice(range(board.getWidth()))
-    while board.getCell(x,board.getHeight()-1) != "u":
-        x = random.choice(range(board.getWidth()))
+    x = random.randrange(8)
+    while (board.getCell(x,board.getHeight()-1) != "u"):
+        x = random.randrange(8)
     return x

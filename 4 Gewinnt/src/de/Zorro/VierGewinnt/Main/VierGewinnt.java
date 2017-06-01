@@ -12,6 +12,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.lang.ProcessBuilder.Redirect;
 import java.util.LinkedList;
+import java.util.Random;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
@@ -40,7 +41,7 @@ public class VierGewinnt {
                             "Not enough arguments. Usage: java -jar VierGewinnt.jar Path/To/Java/AI1.java Path/To/Python/AI.py");
             return;
         }
-
+        new Random().nextInt(8);
         createBoard();
 
         loadAIs(args[0], args[1]);
@@ -141,7 +142,7 @@ public class VierGewinnt {
             bN.setNew(player - 1, t.get(i));
             for (int y = b.getHeight() - 1; y >= 0; y--) {
                 pw.print("<tr>");
-                for (int x = b.getWidth() - 1; x >= 0; x--) {
+                for (int x = 0; x < b.getWidth(); x++) {
                     pw.print("<td>");
                     if (bN.getCell(x, y).equalsIgnoreCase("X")) {
                         pw.print("<div class='X'></div>");
@@ -233,16 +234,14 @@ public class VierGewinnt {
     private static AI loadPyAI(File ai) {
         Process p = null;
         try {
-        p = null;
-            p = new ProcessBuilder("py", "." + File.separator  + "python" + File.separator  + "handler.py").redirectError(Redirect.INHERIT).start();
-        } catch (IOException e) {
-            try{
-            p = new ProcessBuilder("python", "." + File.separator  + "python" + File.separator  + "handler.py").redirectError(Redirect.INHERIT).start();
-            }catch(Exception e2){
-                e2.printStackTrace();
-                System.out.println("ERROR: Is Python installed on your system? And accessible with either py or python?");
-                System.exit(0);
-            }
+            p = new ProcessBuilder("cmd",
+                            "/C","py","." + File.separator + "python" + File.separator + "handler.py")
+                                            .redirectErrorStream(true).start();
+        } catch (Exception e2) {
+            e2.printStackTrace();
+            System.out.println(
+                            "ERROR: Is Python installed on your system? And accessible with either py or python?");
+            System.exit(0);
         }
         final PrintWriter pw = new PrintWriter(new OutputStreamWriter(p.getOutputStream()));
         final BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -258,16 +257,18 @@ public class VierGewinnt {
                 for (int x = 0; x < b.getWidth(); x++) {
                     for (int y = 0; y < b.getHeight(); y++) {
                         pw.println(b.getCell(x, y));
+                        
                     }
                 }
                 pw.println(symbol);
                 pw.flush();
                 String line = "";
                 try {
-                    while((line=br.readLine())!=null){
-                        if(!line.startsWith("pos_x_result_handler=")){
+                    
+                    while ((line = br.readLine()) != null) {
+                        if (!line.startsWith("pos_x_result_handler=")) {
                             System.out.println(line);
-                        }else{
+                        } else {
                             int i = Integer.valueOf(line.split("=")[1]);
                             return i;
                         }
@@ -322,16 +323,19 @@ public class VierGewinnt {
         try {
             c = new File(ai.getPath() + File.separator + ai.getName().replace(".java", ".class"));
             if (c.exists()) c.delete();
-            if(new File("libs").exists()){
-                new ProcessBuilder("javac", "-cp", "." + File.separator  + "VierGewinnt.jar;." + File.separator  + "libs" + File.separator  + "*", ai.getAbsolutePath())
-                .redirectOutput(Redirect.INHERIT).redirectErrorStream(true).start()
-                .waitFor();
-            }else{
-                new ProcessBuilder("javac", "-cp", "." + File.separator  + "VierGewinnt.jar", ai.getAbsolutePath())
-                .redirectOutput(Redirect.INHERIT).redirectErrorStream(true).start()
-                .waitFor();    
+            if (new File("libs").exists()) {
+                new ProcessBuilder("javac", "-cp",
+                                "." + File.separator + "VierGewinnt.jar;." + File.separator + "libs"
+                                                + File.separator + "*",
+                                ai.getAbsolutePath()).redirectOutput(Redirect.INHERIT)
+                                                .redirectErrorStream(true).start().waitFor();
+            } else {
+                new ProcessBuilder("javac", "-cp", "." + File.separator + "VierGewinnt.jar",
+                                ai.getAbsolutePath()).redirectOutput(Redirect.INHERIT)
+                                                .redirectErrorStream(true).start().waitFor();
             }
-            c = new File(ai.getParentFile().getAbsolutePath() + File.separator  + ai.getName().replace(".java", ".class"));
+            c = new File(ai.getParentFile().getAbsolutePath() + File.separator
+                            + ai.getName().replace(".java", ".class"));
             if (!c.exists()) {
                 System.out.println("ERROR: Compiling your Source Code File didn't work! ("
                                 + ai.getName() + ")");

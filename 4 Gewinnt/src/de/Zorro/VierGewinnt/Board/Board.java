@@ -32,13 +32,14 @@ public class Board {
         return b;
     }
 
+    public int getWidth() {
+        return board.length;
+    }
+    
     public LinkedList<Integer> getPreviousTurns() {
         return turns;
     }
 
-    public int getWidth() {
-        return board.length;
-    }
 
     public int getHeight() {
         return board[0].length;

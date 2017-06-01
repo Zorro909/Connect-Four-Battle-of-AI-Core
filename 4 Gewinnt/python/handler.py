@@ -7,18 +7,22 @@
 
 import imp
 from sys import stdin
+import sys
 import timeout
 global board
 global symbol
 
+
 class Board():
-    def __init__(self,board):
-        self.board = board
-    def getCell(x,y):
+    def __init__(self,b):
+        self.board = b
+    def getCell(self,x,y):
         return self.board[x][y]
-    def getWidth():
+    	
+    def getWidth(self):
         return len(self.board)
-    def getHeight():
+    
+    def getHeight(self):
         return len(self.board[0])
 
 def load_ai(filename):
@@ -44,19 +48,22 @@ def load_ai(filename):
 file = stdin.readline().rstrip()
 
 module = load_ai(file)
-w, h = int(stdin.readline()), int(stdin.readline());
-
+w = int(stdin.readline())
+h = int(stdin.readline());
 turn = int(stdin.readline())
 while turn > 0:
     b = [[0 for x in range(w)] for y in range(h)]
-    x, y = 0,0
+    x = 0
+    y = 0
     while x < w:
         while y < h:
-            b[x][y] = stdin.readline()
+            b[x][y] = stdin.readline().rstrip()
             y = y + 1
+        y = 0
         x = x + 1
     board = Board(b)
-    symbol = stdin.readline()
+    symbol = stdin.readline().rstrip()
     pos_x = timeout.timelimit(3, eval("module." + "turn"), args=(board, symbol))
     print("pos_x_result_handler=" + str(pos_x))
+    sys.stdout.flush()
     turn = int(stdin.readline())
