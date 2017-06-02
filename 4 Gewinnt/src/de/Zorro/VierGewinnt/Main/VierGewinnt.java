@@ -234,13 +234,12 @@ public class VierGewinnt {
     private static AI loadPyAI(File ai) {
         Process p = null;
         try {
-            p = new ProcessBuilder("cmd",
-                            "/C","py","." + File.separator + "python" + File.separator + "handler.py")
+            p = new ProcessBuilder("py","." + File.separator + "python" + File.separator + "handler.py")
                                             .redirectErrorStream(true).start();
         } catch (Exception e2) {
             e2.printStackTrace();
             System.out.println(
-                            "ERROR: Is Python installed on your system? And accessible with either py or python?");
+                            "ERROR: Is Python installed on your system? And accessible with python?");
             System.exit(0);
         }
         final PrintWriter pw = new PrintWriter(new OutputStreamWriter(p.getOutputStream()));
