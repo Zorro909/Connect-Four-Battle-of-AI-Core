@@ -1,5 +1,10 @@
 language: java
 script: mvn install
+
+before_deploy:
+  - before_deploy.sh
+  - git tag $GIT_TAG -a
+
 deploy:
   skip_cleanup: true
   provider: releases
