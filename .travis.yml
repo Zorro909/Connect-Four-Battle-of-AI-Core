@@ -2,7 +2,7 @@ language: java
 script: mvn install
 
 before_deploy:
-  - $TRAVIS_BUILD_DIR\before_deploy.sh
+  - $TRAVIS_BUILD_DIR/before_deploy.sh
   - git tag $GIT_TAG -a
 
 deploy:
