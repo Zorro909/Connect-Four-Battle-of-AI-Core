@@ -1,10 +1,6 @@
 language: java
 script: mvn install
 
-before_deploy:
-  - chmod +x $TRAVIS_BUILD_DIR/before_deploy.sh
-  - $TRAVIS_BUILD_DIR/before_deploy.sh
-
 deploy:
   skip_cleanup: true
   provider: releases
