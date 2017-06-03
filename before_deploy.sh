@@ -1,4 +1,4 @@
-IFS=';' read -ra ADDR <<< (ls target\Connect-Four-Battle-of-AI-Core*)
+IFS=';' read -ra ADDR <<< $(ls target\Connect-Four-Battle-of-AI-Core*)
 for i in "${ADDR[@]}"; do
     if [[$i == v*]] ;
     then
