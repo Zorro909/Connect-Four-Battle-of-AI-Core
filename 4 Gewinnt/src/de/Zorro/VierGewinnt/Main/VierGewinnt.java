@@ -234,7 +234,7 @@ public class VierGewinnt {
     private static AI loadPyAI(File ai) {
         Process p = null;
         try {
-            p = new ProcessBuilder("python","." + File.separator + "python" + File.separator + "handler.py")
+            p = new ProcessBuilder("py","." + File.separator + "python" + File.separator + "handler.py")
                                             .redirectErrorStream(true).start();
         } catch (Exception e2) {
             e2.printStackTrace();
