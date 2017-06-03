@@ -53,8 +53,8 @@ public class VierGewinnt {
         cr.println("Starting Connect-Four Engine...");
         if (args.length < 2) {
             cr.clearScreen();
-            cr.println("Not enough arguments. Usage: java -jar VierGewinnt.jar Path/To/Java/AI.java Path/To/Python/AI.py [-s|-log]");
-            cr.println(" -s [amount]: How many Games should be played through. Similiar to statistics.py in original CoRe");
+            cr.println("Not enough arguments. Usage: java -jar VierGewinnt.jar Path/To/Java/AI.java Path/To/Python/AI.py [-a|-log] [-export {source} {target}]");
+            cr.println(" -a [amount]: How many Games should be played through. Similiar to statistics.py in original CoRe");
             cr.println(" -log: Logs every Game to a File, which can then be exported to a html.");
             cr.println(" -export [Source] [Target]: Exports a Logged Game (Source) to a html (Target).");
             cr.println("PS: File Paths currently cannot have Spaces in them!");
