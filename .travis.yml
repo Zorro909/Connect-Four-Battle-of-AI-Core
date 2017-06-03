@@ -8,6 +8,6 @@ deploy:
   file: target\Connect-Four-Battle-*-release.*
   skip_cleanup: true
   on:
-   v0.1.2.2: true
+   tags: true
 jdk:
   - oraclejdk8
