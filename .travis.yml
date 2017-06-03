@@ -11,7 +11,7 @@ deploy:
   api_key:
     secure: dnYGFCDnGslnEvnt/T1LqLv+8dfIceWUEy4IuFbfszNPmrkRYh1BO687DUpiiFlVQgliF3ntVzEobr4IKcuSU8hbQF/IMYZn9tupnNc/7OncWyU+tds1TGgFYp3thWmsjS1tuYuvFfbUWnHfZZMJ2b8ba5NQplMqYmuCgBUMhMOLEECPUWAaoPIjJR0EMI8+0yEK2Q/T9rE4hb91Xl/XF9NniUq+9JclbI/hAFjg1drQhyf8sZiVkATfURIwuiP/J7Zruutj4EEsbKT9XkwiogUXadfPEbqvO9fernhbt9lLc2fz3IOr+tJhUYoYgkuM53mXWjtPo4IW+LhsdEhqSp+X4ZOtFOJyXAYpoT66DvamNIP6Eby9Ny7Q/dzoOcxQvGgOYJSmjcfkMc+8xE43GPm+S03l8sVF1WCCAQ8DDEZUnK+mApvM7yAVleIf5mSmhIklCGSAS5CytfEQ1SGCwDslqMXeMdetjxRKI4gfaF37wTRsW5W5+erFhHA1XYjugdQ4XYEUhtcr2wp87VYWv/vuf8tkCHvZOAnsJ+knYsd+CxsTfybTE+E4Coyhur6VauRwOCi3K77JT7RWLl9wd7F3cBwsAWeoBzX2Lrzy689HVgCKdzMEQLsglAdvqmkCBK8tWBqTPdvxAsh3YZznziWNxJG/5TVFKgreFSKBWjE=
   file_glob: true
-  file: target\Connect-Four-Battle-*-release.*
+  file: $TRAVIS_BUILD_DIR/target/Connect-Four-Battle-*-release.*
   on:
    tags: true
    all_branches: true
