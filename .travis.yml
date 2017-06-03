@@ -8,3 +8,5 @@ deploy:
   file: target\Connect-Four-Battle-*-release.*
   on:
     repo: Zorro909/Connect-Four-Battle-of-AI-Core
+jdk:
+  - oraclejdk8
