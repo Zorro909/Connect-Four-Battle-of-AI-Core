@@ -535,12 +535,12 @@ public class VierGewinnt {
             if (c.exists()) c.delete();
             if (new File("libs").exists()) {
                 new ProcessBuilder("javac", "-cp",
-                                "." + File.separator + "VierGewinnt.jar;." + File.separator + "libs"
+                                "." + File.separator + "*.jar;." + File.separator + "libs"
                                                 + File.separator + "*",
                                 ai.getAbsolutePath()).redirectOutput(Redirect.INHERIT)
                                                 .redirectErrorStream(true).start().waitFor();
             } else {
-                new ProcessBuilder("javac", "-cp", "." + File.separator + "VierGewinnt.jar",
+                new ProcessBuilder("javac", "-cp", "." + File.separator + "*.jar",
                                 ai.getAbsolutePath()).redirectOutput(Redirect.INHERIT)
                                                 .redirectErrorStream(true).start().waitFor();
             }
