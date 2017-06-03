@@ -6,4 +6,5 @@ public interface AI {
 
     public int turn(Board b, String symbol);
     
+    public void shutdown();
 }
